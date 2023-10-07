@@ -1,0 +1,10 @@
+
+interface fastethernet 2/0
+ip address 10.10.1.2 255.255.255.252
+ip ospf 2 area 1
+no shutdown
+!
+interface loopback 0
+ip address 100.100.20.11
+
+

@@ -1,0 +1,23 @@
+interface gigabitethernet 0/0
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 1,10,20,30,40
+No negotiation auto
+duplex full
+
+interface gigabitethernet 0/1
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 1,10,20,30,40
+No negotiation auto
+duplex full
+
+interface gigabitethernet 0/2
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 1,10,20,30,40
+No negotiation auto
+duplex full
+
+interface gigabitethernet 0/3
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 1,10,20,30,40
+No negotiation auto
+duplex full

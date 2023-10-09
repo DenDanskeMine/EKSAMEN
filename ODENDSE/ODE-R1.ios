@@ -1,9 +1,21 @@
 
 interface fastethernet 2/0
 ip address 10.10.1.18 255.255.255.252
+ip ospf 2 area 1
 no shutdown
 !
-router ospf 2
-network 10.10.1.0 0.0.0.255 area 1
+interface loopback 0
+ip address 100.100.20.55 255.255.255.255
+ip ospf 2 area 1
+!
+interface fastethernet 5/0
+ip address 10.10.2.18 255.255.255.252
+no shutdown
+ip ospf 1 area 0
+!
+router bgp 65005
+neighbor 10.10.2.17 remote-as 3292
+network 10.10.2.0 mask 255.255.255.0
+redistribute ospf 1
 
 

@@ -13,7 +13,7 @@ ip address 10.10.2.18 255.255.255.252
 no shutdown
 ip ospf 1 area 0
 !
-router bgp 65005
+no router bgp 65005
 neighbor 10.10.2.17 remote-as 3292
 network 10.10.2.0 mask 255.255.255.0
 redistribute ospf 1

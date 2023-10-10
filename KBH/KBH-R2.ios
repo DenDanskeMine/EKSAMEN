@@ -64,7 +64,7 @@ encapsulation dot1q 30
 ip address 172.16.30.3 255.255.255.0
 no shutdown
 ip nat inside
-standby 30 ip
+standby 30 ip 172.16.30.1
 standby 30 priority 100
 standby 30 preempt
 standby 30 timers 1 3
@@ -85,5 +85,25 @@ standby 40 track fastethernet 4/0 10
 !
 router ospf 2
 network 172.16.0.0 0.0.255.255 area 1
+!
+!
+ip dhcp pool VLAN20
+network 172.16.20.0 255.255.255.0
+default-router 172.16.20.1
+dns-server 172.16.10.10
+!
+ip dhcp pool VLAN30
+network 172.16.30.0 255.255.255.0
+default-router 172.16.30.1
+dns-server 172.16.10.10
+!
+ip dhcp pool VLAN40
+network 172.16.40.0 255.255.255.0
+default-router 172.16.40.1
+dns-server 172.16.10.10
+!
+ip dhcp excluded-address 172.16.40.0 172.16.40.9
+ip dhcp excluded-address 172.16.30.0 172.16.30.9
+ip dhcp excluded-address 172.16.20.0 172.16.20.9
 
 

@@ -1,0 +1,17 @@
+interface fa 0/0
+ip address dhcp
+ip nat outside
+no shutdown
+!
+interface fa 0/1
+ip address 90.90.90.1 255.255.255.0
+ip nat inside
+no shutdown
+!
+ip nat inside source list 1 interface fa 0/0 overload
+access-list 1 permit any
+!
+ip route 0.0.0.0 0.0.0.0 192.168.122.1
+router ospf 1
+network 192.168.122.0 0.0.0.255 area 0
+network 90.90.90.0 0.0.0.255 area 0

@@ -11,10 +11,11 @@ ip nat inside
 no shutdown
 !
 interface fastethernet 2/0
-ip address dhcp
+!ip address dhcp
 ip nat outside
+ip vrf forwarding TechSolution
 no shutdown
-ip ospf 1 area 0
+ip ospf 2 area 1
 duplex full
 
 !
@@ -30,8 +31,15 @@ neighbor 100.100.10.1 remote-as 3292
 neighbor 100.100.10.3 remote-as 3292
 neighbor 100.100.10.4 remote-as 3292
 neighbor 100.100.10.5 remote-as 3292
-redistribute ospf 1
+neighbor 100.100.10.3 update-source lo 0
+neighbor 100.100.10.5 update-source lo 0
 network 0.0.0.0 mask 0.0.0.0 
+address-family vpnv4
+neighbor 100.100.10.3 activate
+neighbor 100.100.10.5 activate
+!
+address-family ipv4 vrf TechSolution
+redistribute ospf 2
 
 !
 interface loopback 0

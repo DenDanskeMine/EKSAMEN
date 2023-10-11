@@ -1,0 +1,25 @@
+interface gigabitethernet 0/0
+switchport mode access
+switchport access vlan 12
+!
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 12
+!
+interface gigabitethernet 0/2
+switchport mode access
+switchport access vlan 12
+!
+interface gigabitethernet 0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,12
+!
+interface vlan 1
+ip address 172.16.102.7 255.255.255.0
+no shutdown
+!
+interface vlan 12
+ip address 172.16.12.7 255.255.255.0
+no shutdown
+!
